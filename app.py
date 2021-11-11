@@ -22,3 +22,14 @@ def login():
         conn.commit()
         conn.close()
 
+@app.route('/update', methods=['PUT'])
+def update():
+        if request.method == 'PUT':
+            passw = request.form['password']
+            user = request.form['email']
+
+            cursor.execute("UPDATE users SET password = '%s' WHERE user = '%s' " % (user, passw))
+            conn.commit()
+            conn.close()
+
+
