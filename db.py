@@ -4,6 +4,3 @@ def external_db():
     conn = sqlite3.connect('users.db')
     cursor = conn.cursor()
     return cursor
-
-def test():
-    print('Test func')
