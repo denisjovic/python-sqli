@@ -6,10 +6,11 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
-  
 # Connecting to sqlite
-conn = sqlite3.connect('gfg.db')
-cursor = conn.cursor()
+def connectToDB():
+    conn = sqlite3.connect('gfg.db')
+    cursor = conn.cursor()
+    return cursor
 
 
 @app.route('/login', methods=['POST'])
@@ -17,8 +18,10 @@ def login():
     if request.method == 'POST':
         user = request.form['email']
         passw = request.form['password']
+
+        cur = connectToDB()
         
-        cursor.execute("SELECT * FROM employees WHERE username = '%s' AND password = '%s'" %(user,passw))
-        conn.commit()
-        conn.close()
+        cur.execute("SELECT * FROM employees WHERE username = '%s' AND password = '%s'" %(user,passw))
+        cur.commit()
+        cur.close()
 
