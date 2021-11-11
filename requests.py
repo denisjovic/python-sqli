@@ -1,7 +1,7 @@
 import requests
 import db
 
-req = requests.get('http://localhost.com/users/id')
+req = requests.get('http://localhost.com/users/:id')
 
 user_id = req.text
 
