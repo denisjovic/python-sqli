@@ -10,7 +10,7 @@ def register():
         username = request.form['username']
         password = request.form['password']
         
-        db.execute("SELECT * FROM employees WHERE username = '%s' AND password = '%s'" %(username,password))
-        db.commit()
-        db.close()
+        db.external_db.execute("SELECT * FROM employees WHERE username = '%s' AND password = '%s'" %(username,password))
+        db.external_db.commit()
+        db.external_db.close()
 
