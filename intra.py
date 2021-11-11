@@ -1,7 +1,10 @@
 import db
-import test
+import source
 
-cur = db.external_db()
-query = test.query()
+def intra_function():
+    cur = db.external_db()
+    query = source.query()
 
-cur.execute(query)
+    cur.execute(query)
+
+intra_function()
