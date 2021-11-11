@@ -12,7 +12,8 @@ def register():
 
         cur = db.external_db()
         
-        cur.execute("SELECT * FROM employees WHERE username = '%s' AND password = '%s'" %(username,password))
-        cur.external_db.commit()
-        cur.external_db.close()
+        # cur.execute("SELECT * FROM employees WHERE username = '%s' AND password = '%s'" %(username,password))
+        cur.execute(f"SELECT * FROM employees WHERE username = ${username} AND password = ${password}")
+        cur.commit()
+        cur.close()
 
