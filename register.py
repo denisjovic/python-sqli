@@ -17,3 +17,8 @@ def register():
         cur.commit()
         cur.close()
 
+
+
+res = Net::HTTP.post_form(uri, 'username' => 'admin', 'password' => 'passwd')
+
+
